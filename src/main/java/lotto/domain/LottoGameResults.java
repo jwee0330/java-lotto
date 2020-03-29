@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.domain.Constant.DEFAULT_GAME_PRICE;
+import static lotto.domain.Constant.PRICE_PER_GAME;
 
 public class LottoGameResults {
     private static final double ZERO = 0;
@@ -11,22 +11,22 @@ public class LottoGameResults {
     private static final int LOTTO_WIN_MAX = 6;
     private static final int LOTTO_WIN_BONUS = 51;
 
-    private final List<LottoRank> winningGames;
+    private final List<LottoRank> lottoRanks;
 
-    LottoGameResults(List<LottoRank> winningGames) {
-        this.winningGames = winningGames;
+    LottoGameResults(List<LottoRank> lottoRanks) {
+        this.lottoRanks = lottoRanks;
     }
 
     public List<LottoRank> getWinningGames() {
-        return new ArrayList<>(winningGames);
+        return new ArrayList<>(lottoRanks);
     }
 
     public double getProfitRate() {
-        return getWinningPrizeSum() / (double) (winningGames.size() * DEFAULT_GAME_PRICE);
+        return getWinningPrizeSum() / (double) (lottoRanks.size() * PRICE_PER_GAME);
     }
 
     public long getMatchCount(int matchCount) {
-        return winningGames.stream()
+        return lottoRanks.stream()
                 .filter(lottoRank -> isMatch(lottoRank.getMatchCount(), matchCount))
                 .count();
     }

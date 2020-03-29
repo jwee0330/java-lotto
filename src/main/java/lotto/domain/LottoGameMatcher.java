@@ -1,12 +1,11 @@
 package lotto.domain;
 
+import java.util.List;
+
 public class LottoGameMatcher {
 
-    private LottoGameMatcher() {
+    public static int matchCount(LottoTickets lottoTickets, WinningTicket winningTicket) {
+        List<LottoRank> lottoRanks = lottoTickets.checkRank(winningTicket);
+        return 0;
     }
-
-    public static LottoGameResults matchWinningNumber(LottoTickets boughtTickets, WinningNumber winningNumber) {
-        return new LottoGameResults(boughtTickets.checkRank(winningNumber));
-    }
-
 }
