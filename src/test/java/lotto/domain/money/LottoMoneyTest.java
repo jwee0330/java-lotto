@@ -16,12 +16,4 @@ class LottoMoneyTest {
                 .hasMessageContaining("구입 금액은 1000원 이상이어야 합니다");
     }
 
-    @DisplayName("금액을 입력하면 구매할 구매할 수 있는 개수를 구할 수 있다.")
-    @Test
-    public void getAvailableBuyingCountTest() {
-        LottoMoney lottoMoney = LottoMoney.of(25009);
-
-        assertThat(lottoMoney.getAvailableBuyingCount()).isEqualTo(25);
-    }
-
 }

@@ -26,14 +26,18 @@ public class LottoMoney {
         return new BigDecimal(money);
     }
 
-    public int getAvailableBuyingCount() {
-        return Math.floorDiv(money.intValue(), PRICE_PER_GAME);
-    }
-
-    public LottoMoney remainsMoney(int size) {
-        if (getAvailableBuyingCount() < size) {
+    public int getAvailableBuyingCount(int size) {
+        int availableCount = Math.floorDiv(money.intValue(), PRICE_PER_GAME);
+        if (availableCount < size) {
             throw new NotAffordableMoneyException();
         }
-        return LottoMoney.of(money.subtract(BigDecimal.valueOf(PRICE_PER_GAME * size)));
+        return availableCount - size;
     }
+
+//    public LottoMoney remainsMoney(int size) {
+//        if (getAvailableBuyingCount() < size) {
+//            throw new NotAffordableMoneyException();
+//        }
+//        return LottoMoney.of(money.subtract(BigDecimal.valueOf(PRICE_PER_GAME * size)));
+//    }
 }
